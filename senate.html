@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="main.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <title>Senate Data</title>
+</head>
+
+<body>
+
+    <nav>
+        <div class="paddingmenu">
+            <a href="index.html">
+                <img src="otro_logo.png" alt="logo" id="logo">
+            </a>
+        </div>
+
+        <div class="dropdown" class="paddingmenu">
+            <button class="dropbtn">Congress</button>
+            <div class="dropdown-content">
+                <a href="house.html">House</a>
+                <a href="senate.html">Senate</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="paddingbody">
+        <div class="grid">
+            <div>
+                <!--Título e informacion-->
+                <h2>Senators</h2>
+                <p>First convened in 1789, the composition and powers of the Senate are established in Article One of
+                    the
+                    U.S. Constitution. Each state is represented by two senators, regardless of population, who serve
+                    staggered six-year terms. The Senate has several exclusive powers not granted to the House,
+                    including
+                    consenting to treaties as a precondition to their ratification and consenting to or confirming
+                    appointments of Cabinet secretaries, federal judges, other federal executive officials, military
+                    officers, regulatory officials, ambassadors, and other federal uniformed officers, as well as trial
+                    of
+                    federal officials impeached by the House.</p>
+            </div>
+            <div id="miTabla">
+                <input type="checkbox" name="rep" id="rep" value="R" v-model="checkboxes" />Republicans
+                <input type="checkbox" name="rep" id="rep" value="D" v-model="checkboxes" />Democrats
+                <input type="checkbox" name="rep" id="rep" value="I" v-model="checkboxes" />Independents
+
+                <select name="states" id="selector" v-model="stateSelected">
+                    <option value="all">all</option>
+                    <option v-for="state in states" :value="state">{{state}}</option>
+                </select>
+
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Name</th>
+                            <th>Party</th>
+                            <th>State</th>
+                            <th>Years in office</th>
+                            <th>Percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="member in filteredMembers">
+                            <!--v-for es para hacer un loop que va a recorrer un array. member es el nombre que nos inventamos para los elementos de dentro de la array members-->
+                            <td>
+                                {{ member.first_name }},
+                                {{ member.middle_name }}
+                                {{ member.last_name }}
+                            </td>
+                            <td>{{ member.party }}</td>
+                            <td>{{ member.state }}</td>
+                            <td>{{ member.seniority }}</td>
+                            <td>{{ member.votes_with_party_pct }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="email">
+            <a href="mailto:elcorreoquequieres@correo.com">
+                <img src="email.png" alt="email" id="email">
+            </a>
+        </div>
+    </div>
+
+
+    <footer>
+        <small>TGIF | All Rigths Reserved</small>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

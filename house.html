@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="main.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav>
+        <div class="paddingmenu">
+            <a href="index.html">
+                <img src="otro_logo.png" alt="logo" id="logo">
+            </a>
+        </div>
+
+        <div class="dropdown" class="paddingmenu">
+            <button class="dropbtn">Congress</button>
+            <div class="dropdown-content">
+                <a href="house.html">House</a>
+                <a href="senate.html">Senate</a>
+            </div>
+        </div>
+    </nav>
+    <div class="paddingbody">
+        <div class="grid">
+            <h2>Congressmen</h2>
+            <p>The major power of the House is to pass federal legislation that affects the entire country, although its
+                bills must also be passed by the Senate and further agreed to by the U.S. President before becoming law
+                (unless both the House and Senate re-pass the legislation with a two-thirds majority in each chamber).
+                The
+                House has some exclusive powers: the power to initiate revenue bills, to impeach officials (impeached
+                officials are subsequently tried in the Senate), and to elect the U.S. President in case there is no
+                majority in the Electoral College.</p>
+            <p>Each U.S. state is represented in the House in proportion to its population as measured in the census,
+                but
+                every state is entitled to at least one representative. </p>
+
+
+            <div id="miTabla">
+                <input type="checkbox" name="rep" id="rep" value="R" v-model="checkboxes" />Republicans
+                <input type="checkbox" name="rep" id="rep" value="D" v-model="checkboxes" />Democrats
+                <input type="checkbox" name="rep" id="rep" value="I" v-model="checkboxes" />Independents
+
+                <select name="states" id="selector" v-model="stateSelected">
+                    <option value="all">all</option>
+                    <option v-for="state in states" :value="state">{{state}}</option>
+                </select>
+
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Name</th>
+                            <th>Party</th>
+                            <th>State</th>
+                            <th>Years in office</th>
+                            <th>Percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="member in filteredMembers">
+                            <!--v-for es para hacer un loop que va a recorrer un array. member es el nombre que nos inventamos para los elementos de dentro de la array members-->
+                            <td>
+                                {{ member.first_name }},
+                                {{ member.middle_name }}
+                                {{ member.last_name }}
+                            </td>
+                            <td>{{ member.party }}</td>
+                            <td>{{ member.state }}</td>
+                            <td>{{ member.seniority }}</td>
+                            <td>{{ member.votes_with_party_pct }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="email">
+        <a href="mailto:elcorreoquequieres@correo.com">
+            <img src="email.png" alt="email" id="email">
+        </a>
+    </div>
+    <footer>
+        <small>TGIF | All Rigths Reserved</small>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="main.js"> </script>
+</body>
+
+</html>
